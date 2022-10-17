@@ -53,8 +53,8 @@ function App() {
               <option value="16">Proyecto</option>
             </select>
           </div>
-          <div className='col'>
-            LOGO UTD
+          <div className='col d-flex d-flex-col align-self-center'>
+            <img src="icon-152x152.png" alt="logoutd" className='rounded-circle w-25' />
           </div>
         </div>
       </div>
