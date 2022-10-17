@@ -4,12 +4,14 @@ interface useArrayFormOptions {
     maxAmountOfValues: number,
     maxValue:number,
     minValue:number,
+    minInputs: number
 }
 
 const defaultOptions : useArrayFormOptions = {
     maxAmountOfValues: 10,
     maxValue:25,
-    minValue:0
+    minValue:0,
+    minInputs: 1
 }
 
 export const useArrayForm = (defaultArrayValue:string[],options = defaultOptions) =>{
@@ -34,5 +36,13 @@ export const useArrayForm = (defaultArrayValue:string[],options = defaultOptions
         setValues([...values,value])
     } 
 
-    return {values, onInputChange, reset, addInput}
+    const removeInput = (index: number) => {
+        if(values.length > options.minInputs){
+            const copyOfValues = [...values]
+            const filterCopyOfValues = copyOfValues.filter((_,i)=>i!==index)
+            setValues([...filterCopyOfValues])
+        }
+    }
+
+    return {values, onInputChange, reset, addInput, removeInput}
 } 
