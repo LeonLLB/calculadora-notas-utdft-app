@@ -4,6 +4,10 @@ import Form from './components/Form'
 
 function App() {
   const [NotaMinima, setNotaMinima] = useState(12)
+  const [{sumatoria,total}, setNotaDefinitiva] = useState({
+    sumatoria:0,
+    total:0
+  })
 
   const onTipoChange = (e:ChangeEvent<HTMLSelectElement>) => {
     setNotaMinima( parseInt(e.target.value))
@@ -15,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Calculadora de Notas - UTDFT</h1>
+      <h1 className='text-center'>Calculadora de Notas - UTDFT</h1>
       <div className='container'>
         <div className="row align-items-start">
           <div className="col">
@@ -31,6 +35,15 @@ function App() {
         </div>
       </div>
       <Form dispatchNotas={onNotaChange}/>
+      <div className="container mt-4 text-center row">
+        {
+          sumatoria <= 100 && 
+          <span className='fs-5'> Sumatoria : {sumatoria} - Total : {total} </span>
+        }
+        {
+          <span className='fs-5'>Asignatura aplazada</span>
+        }
+      </div>
     </div>
   )
 }

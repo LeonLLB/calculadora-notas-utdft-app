@@ -1,5 +1,5 @@
 import { useArrayForm } from "../hooks/useArrayForm"
-
+import styles from './Form.module.css'
 
 const Form = ({dispatchNotas}:{dispatchNotas:(notas:number[])=>void}) => {
     const {values:Notas, onInputChange:onNotaChange,addInput} = useArrayForm([''])
@@ -13,7 +13,7 @@ const Form = ({dispatchNotas}:{dispatchNotas:(notas:number[])=>void}) => {
   return (
     <div className="row container mt-4">
         <button onClick={()=>addInput()} className="text-center btn btn-primary mb-4 ">Agregar nota</button>
-        <form className="overflow-auto" style={{height:'30rem'}}>
+        <form className={`${styles.formContainer} overflow-auto py-2`} >
             {
                 Notas.map((nota,i)=>(
                     <span key={i} className="my-3">
