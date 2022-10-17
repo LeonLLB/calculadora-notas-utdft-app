@@ -9,6 +9,10 @@ function App() {
     setNotaMinima( parseInt(e.target.value))
   }
 
+  const onNotaChange = (notas: number[]) =>{
+    console.log(notas)
+  }
+
   return (
     <div className="App">
       <h1>Calculadora de Notas - UTDFT</h1>
@@ -26,7 +30,7 @@ function App() {
           </div>
         </div>
       </div>
-      <Form/>
+      <Form dispatchNotas={onNotaChange}/>
     </div>
   )
 }
